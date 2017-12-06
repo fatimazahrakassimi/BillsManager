@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillsManager.View.DetailFacture">
+ 
+  <ContentPage.Content>
+    <StackLayout Padding="10"  VerticalOptions="FillAndExpand">
+      <Grid x:Name="Factable">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition width="Auto"/>
+          <ColumnDefinition width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="idFactlbl" Text="Facture" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+        <Entry x:Name="idFactEnty" Text="{Binding idFacture}" Grid.Row="0" Grid.Column="1" />
+        <Label x:Name="cltlbl" Text="Client" Grid.Row="1" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+        <Entry x:Name="CltEntry" Text="{Binding Client}" Grid.Row="1" Grid.Column="1" />
+        <Label x:Name="mttlbl" Text="Montant TTC" Grid.Row="2" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+        <Entry x:Name="mttEntry" Text="{Binding montantTTC}" Grid.Row="2" Grid.Column="1" />
+        <Label x:Name="DEFlbl" Text="Date d'échéance" Grid.Row="3" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+        <Entry x:Name="DateEchEntry" Text="{Binding dateEcheanceFacture}" Grid.Row="3" Grid.Column="1" />
+        <Label x:Name="Payeelbl" Text="Payée" Grid.Row="4" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+        <Entry x:Name="PayeeEntry" Text="{Binding Payee}" Grid.Row="4" Grid.Column="1" />
+        <Label x:Name="motiflbl" Text="Motif" Grid.Row="5" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+        <Entry x:Name="MotifENtry" Text="{Binding Motif}" Grid.Row="5" Grid.Column="1" />
+        <Label x:Name="mpaielbl" Text="Mode de paiement" Grid.Row="6" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+        <Entry x:Name="PaiementEntry" Text="{Binding modePaiement}" Grid.Row="6" Grid.Column="1" />
+        <Label x:Name="DERlbl" Text="Date d'échéance réelle" Grid.Row="7" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center"/>
+        <DatePicker x:Name="EchDateENtry" MaximumDate="{Binding dateEcheanceFacture}" Text="{Binding dateEcheance}" Grid.Row="7" Grid.Column="1"/>
+        <Picker Title="Keyboard Type" SelectedIndexChanged="OnPickerSelectedIndexChanged"> 
+          <Picker.Items> 
+            <x:String>Cheque</x:String> 
+            <x:String>Effet</x:String>
+            <x:String>Especes</x:String>
+            <x:String>Bon cacheté</x:String>
+            </Picker.Items>
+      </Picker> 
+      </Grid>
+    <Button Text="Enregistrer" HorizontalOptions="Center" BackgroundColor="Green" TextColor="White" Clicked="Save_Clicked"/>
+   <Button Text="Annuler" HorizontalOptions="Center" BackgroundColor="Red" TextColor="White" Clicked="Cancel_Clicked"/>
+  </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

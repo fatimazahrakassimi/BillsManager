@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:BillsManager.View;assembly=BillsManager" x:Class="BillsManager.View.ListeFacture">
+<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Log out" Clicked="OnLogOut"></ToolbarItem>
+	</ContentPage.ToolbarItems>
+	  <StackLayout Padding="0,20,0,0">
+    <Label Text="Binding Context Changed Demo" HorizontalOptions="Center" FontAttributes="Bold" />
+    <ListView  ItemsSource="{Binding DataAccess.Bills}" ItemSelected="OnSelection" ItemTapped="OnTap" IsPullToRefreshEnabled="true" Refreshing="OnRefresh">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+
+          <TextCell Text="{Binding idFacture}" Detail="{Binding Client}" />
+          <ViewCell >
+            <ViewCell.ContextActions>
+              <!-- CommandParameter is the command to pass to the clicked event handler. Because these are menu items, 
+							not cells managed by the ListView, CommandParameter is neccesary to determine which 
+							cell the context action was taken on. -->
+              <MenuItem Clicked="OnMore" Text="More" CommandParameter="{Binding .}" />
+              <MenuItem Clicked="OnDelete" Text="Delete" IsDestructive="true" CommandParameter="{Binding .}" />
+            </ViewCell.ContextActions>
+            <StackLayout Padding="15,0">
+              <Label Text="{Binding .}" />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>
